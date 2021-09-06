@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Vue Js Full course tutorial</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="vue.js"></script>
+	<style>
+		.red{
+			border: 2px solid red;
+		}
+		.green{
+			border: 2px solid green;
+		}
+	</style>
+
+</head>
+<body>
+<div id="app" style="background-color: #20c997;height: 1000px">
+	<h2 class="text-center" style="color: purple">Hello Vue Developers</h2>
+	<hr>
+	<input v-model="email" :class="[email.length<2?'red':'green']">
+	<button onclick="alert('are u sure')" v-bind:disabled="email.length<2">submit</button>
+</div>
+
+
+
+
+
+
+
+<script>
+	new Vue({
+		el:'#app',
+		data:
+		{
+			email:''
+		}
+	})
+
+</script>
+
+</body>
+</html>

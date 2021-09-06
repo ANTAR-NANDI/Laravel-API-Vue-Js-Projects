@@ -1,0 +1,149 @@
+1. npm install -g vue-cli----------->>>>>>>Installing Vue Cli
+2. vue init webpack project_name------>>>>>Create a New Project
+3. npm install bootstrap------>>>npm install bootstrap jquery popper.js
+4. npm add vuetify---->>>add Vuetify on ur project
+5. Add this Lines in main.js ------>>window.$=window.jQuery=require('jquery')
+                            ------->>import 'bootstrap'
+                      ------------->>import 'bootstrap/dist/css/bootstrap.min.css'
+6.To use this components in app.vue---->>import Navbar from './components/Navbar'
+                                  
+  					export default {
+                                             components:{
+                                                      Navbar
+                                                      }
+                                                    }
+7. to Send property from pareent to child we use :::    <navbar :item="item"></navbar>
+8. for receive this property we use :::  export default{
+                                                        props: ['items']
+	                                                  }
+9. To use image ::: (:src="item.photo") 
+
+9.1. this.cart.push(item)----->>push item into cart item.
+
+9.2. this.cart.splice(index,1)----->>pop item into cart item.
+9.3.this.cart.forEach(item=>{
+                         sum+=parseFloat(item.price);
+                            })
+9.4. this.item=data.filter(item=>{
+               
+                  return item.title.toLowerCase().indexOf(keyword.toLowerCase())!==-1
+                     })
+
+
+
+
+
+10.installing vue router->>>>    npm install vue-router
+11.import VueRouter from 'vue-router'   ---->>>>>> add this line on main.js
+     Vue.use(VueRouter)
+11.1: import {routes} from './router/index'
+const router = new VueRouter({
+	routes
+})
+11.2: Index.js:
+import Insert from '/components/Insert'
+export const routes[
+
+    {
+     path:'/Insert',
+	component:InsertProduct
+}
+]
+11.3: routing modes :
+import {routes} from './router/index'
+const router = new VueRouter({
+	routes,
+         mode:'history'
+})
+12.1.  Routing : <router-link :to="{path: '/1'}">Home </router-link>
+{{$route.params.id}}
+
+13. Routing : <router-link :to="{path: '/'}">Home </router-link>
+14.   {
+	path:'/Insert/:id',
+	component:InsertProduct
+}
+15.Main.js file will be : 
+
+import Vue from 'vue'
+import App from './App'
+
+window.$=window.jQuery=require('jquery')
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+Vue.config.productionTip = false
+
+import VueRouter from 'vue-router' 
+Vue.use(VueRouter)
+import {routes} from './router/index'
+const router = new VueRouter({
+	routes
+})
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
+ ##########################################################################    Axios   ################################################################################
+
+1. npm install --save axios vue-axios
+2. import axios from 'axios'   ->>>>>>every usable file
+3. axios.get('http://127.0.0.1:8000/api/items').then(response=>{
+               console.log(response)
+             
+                              });
+4. axios.get('http://127.0.0.1:8000/api/items'+this.$route.params.id).then(response=>{
+               console.log(response)
+             
+                              });
+
+
+
+ ##########################################################################    VueX   ################################################################################
+1.npm install vuex --save
+2.import Vuex from 'vuex'        -->>>>main.js
+3.Vue.use(Vuex)                   -->>>>main.js
+import stoorage from './store/index'   -->>>>main.js
+const store = new Store(routes)
+new Vue({
+  el: '#app',
+  router,store
+  components: { App },
+  template: '<App/>'
+})
+4. 
+export const stoorage{
+
+   state:{
+       cart:[],
+       Inventory:[]
+           },
+  
+     getters:{
+       getinventory(state){
+       return state.inventory
+           } },
+      mutation:{
+           inventory(state,payload){
+             state.cart.push(payload)
+            }
+   
+}
+5.this.$store.commit('inventory',payload)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

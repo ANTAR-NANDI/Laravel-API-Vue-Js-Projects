@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learn Vue</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="vue.js"></script>
+</head>
+<body style="background-color: #cde3e6">
+<p class="text-center">Welcome to Vue Js Tutorial</p>
+<hr>
+   <div id="app">
+    <form @submit.prevent="additem">
+    	<div class="form-group">
+   
+			    <input type="text" class="form-control" v-model="newitem">
+			   
+	   </div>
+    </form>
+   	
+
+   		<li v-for="(item,index) in items">
+   			{{item.name}}----<input v-model="item.price"><br>
+   			<button @click="remove" class="btn btn-danger">Delete</button>
+
+   		</li>
+   		
+   	
+   	<h2 class="text-center">Total price is : {{total}}</h2>
+   </div>
+
+
+
+<script>
+	
+	new Vue({
+		el:'#app',
+		data:{
+			items:[
+            {name:'apple',price:20},
+            {name:'orane',price:40},
+            {name:'coconut',price:80}
+
+			],
+			newitem:''
+
+		},
+		methods:{
+			additem()
+			{
+				this.items.push({
+					name:this.newitem,
+					price:0.0
+				})
+			},
+			remove(index)
+			{
+				this.items.splice(index,1)
+			}
+		},
+		computed:{
+			total()
+			{
+				var sum=0
+				this.items.forEach(item=>{
+					sum+=parseFloat(item.price)
+				})
+				return sum
+			}
+		}
+	})
+</script>
+</body>
+</html>
